@@ -19,47 +19,48 @@ import java.io.FileNotFoundException;
 import java.io.FileWriter;
 import java.io.IOException;
 import java.io.PrintWriter;
-import java.util.ArrayList;
 import java.util.Scanner;
 import javax.swing.*;
 
 public class Main {
     public static void main(String args[]) 
     {
-        String inputFileName = "input.txt";
-        String outputFileName = "SumAreas.txt";
+        final String inputFileName = "input.txt";
+        final String outputFileName = "SumAreas.txt";
 
         
         File fileIn = new File(inputFileName);
-        ArrayList<Drawable> drawables = new ArrayList<>();
+        Drawable[] drawables;
         double areaSum = 0.0;
 
         try (Scanner scanner = new Scanner(fileIn))
         {
-            while (scanner.hasNext())
+            int nShapes = scanner.nextInt();
+            drawables = new Drawable[nShapes];
+            
+            for (int i = 0; i < nShapes; ++i)
             {
                 String shapeStr = scanner.next();
                 double len = scanner.nextDouble();
-                // String shapeColor = "#000000";
-                Shape currShape;
 
                 switch (shapeStr)
                 {
                     case "circle":
                         System.out.println("Adding Circle, " + len);
-                        currShape = new Circle(len);
+                        drawables[i] = new Circle(len);
                         break;
+
                     case "cube":
                         System.out.println("Adding Cube, " + len);
-                        currShape = new Cube(len);
+                        drawables[i] = new Cube(len);
                         break;
+
                     default:
                         return;
                 }
 
-                areaSum += currShape.getArea();
+                areaSum += ((Shape)drawables[i]).getArea();
                 System.out.println("Area Sum = " + areaSum);
-                drawables.add(currShape);
             }
 
             try (
@@ -71,7 +72,7 @@ public class Main {
             }
             catch (IOException e)
             {
-                System.err.println("Error Occurred during the file writing" + e.getMessage());
+                System.err.println("Error Occurred during file writing\n" + e.getMessage());
                 return;
             }
             
@@ -81,6 +82,8 @@ public class Main {
             System.err.println("File not found: " + e.getMessage());
             return;
         }
+
+        // DRAWING
 
         JFrame frame = new JFrame("OOP Shapes GUI");
         frame.setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
