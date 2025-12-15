@@ -60,7 +60,7 @@ public class Circle extends Shape
         int y = 50; // Simple fixed Y position for demonstration
 
         // 3. Draw the circle
-        // g.fillOval(x, y, diameter, diameter); // fill shape
+        g.fillOval(x, y, diameter, diameter); // fill shape
         g.drawOval(x, y, diameter, diameter); // outline
     }
 }

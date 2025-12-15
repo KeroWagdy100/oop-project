@@ -56,7 +56,8 @@ public class Main {
                         break;
 
                     default:
-                        return;
+                        continue;
+                        // return;
                 }
 
                 areaSum += ((Shape)drawables[i]).getArea();
