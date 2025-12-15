@@ -5,8 +5,8 @@ public abstract class ThreeDShape extends Shape
     {
         super();
     }
-    public ThreeDShape(String c) // ME
+    public ThreeDShape(String color)
     {
-        super(c);
+        super(color);
     }
 }

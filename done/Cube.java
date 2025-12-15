@@ -3,13 +3,14 @@ import java.awt.*;
 public class Cube extends ThreeDShape
 {
     private double side;
+
     public Cube(double s)
     {
         side = s;
     }
-    public Cube(String c, double s)
+    public Cube(String color, double s)
     {
-        super(c);
+        super(color);
         this.side = s;
     }
 
@@ -17,32 +18,36 @@ public class Cube extends ThreeDShape
     {
         return side;
     }
+
     public void setSide(double s)
     {
         side = s;
     }
-    
 
     @Override
     public double getVolume()
     {
         return side * side * side;
     }
+
     @Override
     public double getArea()
     {
         return side * side;
     }
+
     @Override
     public double getPerimeter()
     {
         return 12.0 * side;
     }
+
     @Override
     public String howToDraw()
     {
         return "just draw a cube";
     }
+
     @Override
     public void draw(Graphics g)
     {
