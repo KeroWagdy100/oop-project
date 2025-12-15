@@ -24,7 +24,7 @@ public abstract class Shape implements Drawable {
     {
         return color;
     }
-    abstract public double getArea();
-    abstract public double getPerimeter();
+    public abstract double getArea();
+    public abstract double getPerimeter();
 
 }
