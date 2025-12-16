@@ -1,3 +1,6 @@
-2
+5
 circle 30
+circle 30
+circle 90
+cube 50
 cube 50

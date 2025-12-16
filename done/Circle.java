@@ -50,17 +50,14 @@ public class Circle extends Shape
     }
 
     @Override
-    public void draw(Graphics g)
+    public void draw(Graphics g, int x, int y)
     {
         Color c = Color.decode(getColor());
         g.setColor(c);
         
         int diameter = 2 * (int)getRadius();
-        int x = 50; // Simple fixed X position for demonstration
-        int y = 50; // Simple fixed Y position for demonstration
 
-        // 3. Draw the circle
-        g.fillOval(x, y, diameter, diameter); // fill shape
+        // g.fillOval(x, y, diameter, diameter); // fill shape
         g.drawOval(x, y, diameter, diameter); // outline
     }
 }

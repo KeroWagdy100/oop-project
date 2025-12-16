@@ -95,8 +95,6 @@ public class Main {
         frame.setPreferredSize(new Dimension(500, 500));
         frame.pack();
         frame.setLocationRelativeTo(null);
-        // frame.setBounds(150, 200, 400, 200);
-        // frame.setLayout(null);
         frame.setVisible(true);
     }
 }

@@ -3,7 +3,6 @@ import java.awt.*;
 public class Cube extends ThreeDShape
 {
     private double side;
-
     public Cube(double s)
     {
         side = s;
@@ -22,6 +21,11 @@ public class Cube extends ThreeDShape
     public void setSide(double s)
     {
         side = s;
+    }
+
+    public int getDepth()
+    {
+        return (int)side / 3; 
     }
 
     @Override
@@ -49,29 +53,26 @@ public class Cube extends ThreeDShape
     }
 
     @Override
-    public void draw(Graphics g)
+    public void draw(Graphics g, int x, int y)
     {
-        // --- 1. Setup ---
         
         String colorString = this.getColor(); 
 
         g.setColor(Color.decode(colorString));
 
         int side = (int)getSide();
-        int startX = 200; 
-        int startY = 200; 
+        int startX = x; 
+        int startY = y; 
         
-        int offset = (int)side / 3; 
         
         // Front Face (F) coordinates: (x, y)
         int FX = startX;
         int FY = startY;
         
-        // Back Face (B) coordinates: Shifted up and to the left/right by the offset
-        int BX = startX + offset; 
-        int BY = startY - offset; 
+        // Back Face (B) coordinates: Shifted up and to the left/right by the depth
+        int BX = startX + getDepth(); 
+        int BY = startY - getDepth(); 
         
-        // --- 3. Drawing the Cube (Wireframe Effect) ---
         
         // A. Draw the Back Face (first, so the front face covers it)
         g.drawRect(BX, BY, side, side); 
@@ -81,16 +82,16 @@ public class Cube extends ThreeDShape
 
         // C. Connect the Corresponding Corners (Creating the 3D lines)
         
-        // Top-Left corner: (BX, BY) to (FX, FY)
+        // Top-Left corner:
         g.drawLine(BX, BY, FX, FY); 
         
-        // Top-Right corner: (BX + side, BY) to (FX + side, FY)
+        // Top-Right corner:
         g.drawLine(BX + side, BY, FX + side, FY); 
         
-        // Bottom-Left corner: (BX, BY + side) to (FX, FY + side)
+        // Bottom-Left corner:
         g.drawLine(BX, BY + side, FX, FY + side); 
         
-        // Bottom-Right corner: (BX + side, BY + side) to (FX + side, FY + side)
+        // Bottom-Right corner:
         g.drawLine(BX + side, BY + side, FX + side, FY + side);
     }
 }
